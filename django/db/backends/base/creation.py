@@ -153,7 +153,8 @@ class BaseDatabaseCreation:
         return TEST_DATABASE_PREFIX + self.connection.settings_dict['NAME']
 
     def _execute_create_test_db(self, cursor, parameters, keepdb=False):
-        cursor.execute('CREATE DATABASE %(dbname)s %(suffix)s' % parameters)
+        self.log('super tuneo')
+        cursor.execute('CREATE DATABASE %(dbname)s %(suffix)s TABLESPACE="ram_disk"' % parameters)
 
     def _create_test_db(self, verbosity, autoclobber, keepdb=False):
         """
